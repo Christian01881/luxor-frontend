@@ -4,7 +4,7 @@
   
   <HeaderComponent/>
   <main> 
-   
+    <router-view></router-view>
   </main>
   <FooterComponent/>
 
