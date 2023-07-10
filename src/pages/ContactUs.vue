@@ -1,6 +1,6 @@
 <template>
 <section class="p-5 text-white bg-black vh-100">
-<h2 class="h1-responsive font-weight-bold text-center my-4 title">Contattaci</h2>
+<h2 class="h1-responsive font-weight-bold text-center my-4 title">Contattace</h2>
 <p class="text-center w-responsive mx-auto mb-5">Hai delle domande? Non esitare a contattarci direttamente. Il nostro team ti risponderà entro poche ore per aiutarti.</p>
 
 <div class="row">
