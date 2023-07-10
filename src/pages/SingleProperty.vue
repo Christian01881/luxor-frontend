@@ -1,13 +1,53 @@
 <template>
-    <div>
-
+  <Loading v-if="store.loading" />
+  <div v-else class="card container" style="width: 50rem;">
+ 
+    <h2>{{ store.property.title }}</h2>
+    <ul>
+      <li v-for="image in store.property.images" :key="image.id">
+        <img :src="image.path" alt="Property Image">
+      </li>
+    </ul>
+    <p>{{ store.property.description }}</p>
+    <ul>
+      <li>Rooms: {{ store.property.rooms }}</li>
+      <li>Beds: {{ store.property.beds }}</li>
+      <li>Bathrooms: {{ store.property.bathrooms }}</li>
+      <li>Square Meters: {{ store.property.square_meters }}</li>
+      <li>Address: {{ store.property.address }}</li>
+    </ul>
+      
+    <div class="project-body">
+      <div class="container">
+        <h3>Services:</h3>
+    <ul>
+      <li v-for="service in store.property.services" :key="service.id">{{ service.name }}</li>
+    </ul>
+        
+      </div>
     </div>
+  </div>
 </template>
-
 <script>
-    export default {
+import { store } from "../store";
+import Loading from "../components/Loading.vue";
 
-    }
+export default {
+  name: "SingleProperty",
+  components: {
+    Loading,
+  },
+  data() {
+    return {
+      store,
+      linkProperty: "http://localhost:8000/api/properties/",
+    };
+  },
+  created() {
+    const propertytSlug = this.$route.params.slug;
+    store.getProperty(this.linkProperty + propertytSlug, true);
+  },
+};
 </script>
 
 <style lang="scss" scoped>
