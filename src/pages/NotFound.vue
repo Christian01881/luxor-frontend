@@ -14,8 +14,8 @@
 
 
     <!-- Make sure to change 'href' attribute (Go Home) in Line 110 -->
-
-    <div class="bg-dark">
+    <div class="d-flex flex-column justify-content-center align-items-center vh-100 bg-black">
+    <div>
         <svg width="636px" viewBox="-100 0 536 190" xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink">
             <defs>
@@ -104,7 +104,7 @@
             </g>
         </svg>
     </div>
-    <div class="bg-dark">
+    <div>
         <svg width="293px" viewBox="0 0 293 63" xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink">
             <defs>
@@ -142,7 +142,7 @@
             </g>
         </svg>
     </div>
-    <div class="bg-dark">
+    <div >
         <!-- Replace your Home page address with href -->
         <router-link :to="{ name: 'home' }">
             <svg width="107px" viewBox="0 0 107 34" xmlns="http://www.w3.org/2000/svg"
@@ -183,11 +183,11 @@
         </svg>
     </router-link>
 </div>
+</div>
 
 
 
-
-<!-- Created by ARiyou2000 --></template>
+</template>
 
 <script>
 export default {
@@ -205,6 +205,8 @@ export default {
 $p: 12px;
 $easeOutCubic: cubic-bezier(0.215, 0.610, 0.355, 1.000);
 $easeOutExpo: cubic-bezier(0.190, 1.000, 0.220, 1.000);
+
+
 
 *, *:before, *:after { 
   box-sizing: border-box; 
@@ -332,7 +334,8 @@ main {
         }
         &:active {
           .top use {
-            fill: darken(#FF0000, 15%);
+          fill: darken(#FF0000, 15%);
+         
           }
         }
       }
