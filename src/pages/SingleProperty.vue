@@ -4,8 +4,8 @@
  
     <h2>{{ store.property.title }}</h2>
     <ul>
-      <li v-for="image in store.property.images" :key="image.id">
-        <img :src="image.path" alt="Property Image">
+        <li v-for="image in store.property.images" :key="image.id">
+        <img :src="getImagePath(image.path)" alt="Property Image">
       </li>
     </ul>
     <p>{{ store.property.description }}</p>
@@ -42,6 +42,11 @@ export default {
       store,
       linkProperty: "http://localhost:8000/api/properties/",
     };
+  },
+  methods: {
+    getImagePath(path) {
+      return store.imgBasePath + path;
+    },
   },
   created() {
     const propertytSlug = this.$route.params.slug;

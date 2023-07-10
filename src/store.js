@@ -27,7 +27,7 @@ export const store = reactive({
     },
     properties: [],
     links: [],
-    // loading: false,
+    loading: false,
     property: [],
     
 });
