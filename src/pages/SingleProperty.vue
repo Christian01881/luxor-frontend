@@ -23,7 +23,7 @@
     <ul>
       <li v-for="service in store.property.services" :key="service.id">{{ service.name }}</li>
     </ul>
-        
+    <a class="btn2 btn btn-danger"><router-link class="nav-link" :to="{ name: 'all-properties' }">Go to back</router-link></a>
       </div>
     </div>
   </div>
@@ -31,11 +31,14 @@
 <script>
 import { store } from "../store";
 import Loading from "../components/Loading.vue";
+import { Carousel, Slide } from '../components/Carousel';
 
 export default {
   name: "SingleProperty",
   components: {
     Loading,
+    Carousel,
+      Slide
   },
   data() {
     return {
