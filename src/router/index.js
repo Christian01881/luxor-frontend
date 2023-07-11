@@ -45,7 +45,7 @@ const router = createRouter({
       component: NotFound
     },
     {
-      path: '/searchBar',
+      path: '/searchbar',
       name: 'searchBar',
       component: searchBar
 
