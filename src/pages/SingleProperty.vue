@@ -31,14 +31,13 @@
 <script>
 import { store } from "../store";
 import Loading from "../components/Loading.vue";
-import { Carousel, Slide } from '../components/Carousel';
+
 
 export default {
   name: "SingleProperty",
   components: {
     Loading,
-    Carousel,
-      Slide
+   
   },
   data() {
     return {
