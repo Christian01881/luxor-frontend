@@ -24,6 +24,7 @@
       <li v-for="service in store.property.services" :key="service.id">{{ service.name }}</li>
     </ul>
     <a class="btn2 btn btn-danger"><router-link class="nav-link" :to="{ name: 'all-properties' }">Go to back</router-link></a>
+    <button class="btn btn-primary" @click="sendMessage">Invia un messaggio al proprietario</button>
       </div>
     </div>
   </div>
@@ -49,6 +50,12 @@ export default {
     getImagePath(path) {
       return store.imgBasePath + path;
     },
+
+    sendMessage() {
+    const propertyId = this.store.property.id;
+    this.$router.push({ name: 'create-message', params: { id: propertyId } });
+  },
+  
   },
   created() {
     const propertytSlug = this.$route.params.slug;

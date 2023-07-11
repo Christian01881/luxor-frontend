@@ -38,7 +38,7 @@ export default {
     methods: {
         getData() {
             axios.get(`${store.apiURL}/properties`).then((res) => {
-                console.log(res.data.results.data);
+                // console.log(res.data.results.data);
                 this.properties = res.data.results.data
             })
         }
