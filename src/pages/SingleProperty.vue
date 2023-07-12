@@ -5,7 +5,10 @@
     <div class="row">
       <div class="col-md-6">
         <div class="image-container">
-          <img :src="getImagePath(store.property.images[activeImageIndex].path)" alt="Property Image" />
+          <img
+            :src="getImagePath(store.property.images[activeImageIndex].path)"
+            alt="Property Image"
+          />
           <div class="thumbnails">
             <img
               v-for="(image, index) in store.property.images"
@@ -23,7 +26,7 @@
         <div class="row">
           <div class="col-sm-6">
             <p class="border border-1 rounded-2 p-2">
-              <span class="fw-bold">Rooms:</span> 
+              <span class="fw-bold">Rooms:</span>
               {{ store.property.rooms }}
             </p>
           </div>
@@ -36,12 +39,14 @@
         <div class="row">
           <div class="col-sm-6">
             <p class="border border-1 rounded-2 p-2">
-              <span class="fw-bold">Bathrooms:</span> {{ store.property.bathrooms }}
+              <span class="fw-bold">Bathrooms:</span>
+              {{ store.property.bathrooms }}
             </p>
           </div>
           <div class="col-sm-6">
             <p class="border border-1 rounded-2 p-2">
-              <span class="fw-bold">Square Meters:</span> {{ store.property.square_meters }}
+              <span class="fw-bold">Square Meters:</span>
+              {{ store.property.square_meters }}
             </p>
           </div>
         </div>
@@ -56,13 +61,23 @@
           <div class="col-12">
             <h3>Services:</h3>
             <div class="d-flex">
-              <div class="card me-3 p-1" v-for="service in store.property.services" :key="service.id">
+              <div
+                class="card me-3 p-1"
+                v-for="service in store.property.services"
+                :key="service.id"
+              >
                 {{ service.name }}
               </div>
             </div>
             <div class="d-flex p-3">
-              <a class="btn2 btn btn-danger me-2" @click="$router.push({ name: 'all-properties' })">Go back</a>
-              <button class="btn btn-primary" @click="sendMessage">Send Message</button>
+              <a
+                class="btn2 btn btn-danger me-2"
+                @click="$router.push({ name: 'all-properties' })"
+                >Go back</a
+              >
+              <button class="btn btn-primary" @click="sendMessage">
+                Send Message
+              </button>
             </div>
           </div>
         </div>
@@ -103,12 +118,11 @@ export default {
     changeImage(index) {
       this.activeImageIndex = index;
     },
-
-   },
-    created() {
-    const propertytSlug = this.$route.params.id;
+  },
+  created() {
+    const propertytSlug = this.$route.params.slug;
     store.getProperty(this.linkProperty + propertytSlug, true);
-   },
+  },
 };
 </script>
 
@@ -121,7 +135,7 @@ export default {
 .image-container img {
   width: 100%;
   height: 100%;
-  object-fit:fill;
+  object-fit: fill;
 }
 
 .thumbnails {
@@ -146,9 +160,3 @@ export default {
   opacity: 0.5;
 }
 </style>
-
-
-
-
-
-

@@ -92,7 +92,7 @@
                   <router-link
                     :to="{
                       name: 'single-property',
-                      params: { id: property.id },
+                      params: { slug: property.slug },
                     }"
                   >
                     {{ property.title }}
