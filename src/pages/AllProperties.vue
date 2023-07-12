@@ -1,28 +1,41 @@
 <template>
-    <div class="container my-5">
+    <div class="container py-5">
         <div class="row">
-            <div class="col-6 mb-5" v-for="property in properties" :key="property.id">
+            <div class="col-12 col-md-6 mb-5" v-for="(property, index) in properties" :key="property.id">
                 <div class="card h-100">
-                    <img v-if="property.images.length > 0" :src=" 'http://127.0.0.1:8000/storage/' + property.images[0].path" alt="">
+                    <img :src="`http://127.0.0.1:8000/storage/${property.images[0].path}`" alt="" class="card-img" v-if="property.images.length > 0">
+                    <img v-else src="https://www.leonardospada.it/wp-content/uploads/2022/09/errore-404-pagina-non-trovata-1024x576.jpg" alt="Image-Not-Found" class="h-100">
                     <div class="card-body">
                         <h4 class="fw-bold text-warning">
                             <router-link :to="{ name: 'single-property', params: { slug: property.slug } }">
                                 {{ property.title }}
-                            </router-link></h4>
-                        <div class="d-flex">
-                        <p><span class="fw-bold">Camere: </span>{{ property.rooms }}</p>
-                        <p><span class="fw-bold">Letti: </span>{{ property.beds }}</p>
-                        <p><span class="fw-bold">Bagni: </span>{{ property.bathrooms }}</p>
-                        <p><span class="fw-bold">Metri quadri: </span>{{ property.square_meters }}</p>
-                        <!-- <p><span class="fw-bold">Indirizzo: </span>{{ property.address }}</p> -->
-                    </div>
-                        
+                            </router-link>
+                        </h4>
+                        <div class="row">
+                            <div class="col-4">
+                                <p><span class="fw-bold"><i class="fa-solid fa-bed"></i> Camere: </span>{{ property.rooms }}</p>
+                            </div>
+                            <div class="col-4">
+                                <p><span class="fw-bold"><i class="fa-solid fa-sink"></i> Bagni: </span>{{ property.bathrooms }}</p>
+                            </div>
+                            <div class="col-4">
+                                <p><span class="fw-bold"><i class="fa-solid fa-ruler-combined"></i> Metri quadri: </span>{{ property.square_meters }}</p>
+                            </div>
+                            <div class="col-6 text-center">
+                                <p><span class="fw-bold"><i class="fa-solid fa-map-location"></i> Indirizzo: </span>{{ property.address }}</p>
+                            </div>
+                            <div class="col-6 text-center">
+                                <p><span class="fw-bold"><i class="fa-solid fa-bell-concierge"></i> Servizi: </span><span v-for="service in property.services" class="me-2">{{ service.name }}</span></p>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </template>
+
 
 <script>
 import { store } from '../store.js';
@@ -32,14 +45,14 @@ export default {
     data() {
         return {
             store,
-            properties: []
+            properties: [],
         };
     },
     methods: {
         getData() {
             axios.get(`${store.apiURL}/properties`).then((res) => {
                 console.log(res.data.results.data);
-                this.properties = res.data.results.data
+                this.properties = res.data.results.data;
             })
         }
     },
@@ -50,9 +63,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-main{
-    background-color: black;
-}
 p {
     padding-right: 15px;
 }
