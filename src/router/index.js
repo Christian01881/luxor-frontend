@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../pages/HomeView.vue'
+import searchBar from '../pages/testSearchBar.vue'
 import AllProperties from '../pages/AllProperties.vue'
 import SingleProperty from '../pages/SingleProperty.vue'
 import AboutUs from '../pages/AboutUs.vue'
@@ -29,7 +30,7 @@ const router = createRouter({
       path: '/contact-us',
       name: 'contact-us',
       component: ContactUs
-      
+
     },
     {
       path: '/about-us',
@@ -48,8 +49,13 @@ const router = createRouter({
       path: '/:pathMatch(.*)*',
       name: '404-not-found',
       component: NotFound
+    },
+    {
+      path: '/searchbar',
+      name: 'searchBar',
+      component: searchBar
+
     }
-    
   ]
 })
 export default router
