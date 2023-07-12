@@ -6,6 +6,7 @@ import SingleProperty from '../pages/SingleProperty.vue'
 import AboutUs from '../pages/AboutUs.vue'
 import NotFound from '../pages/NotFound.vue'
 import ContactUs from '../pages/ContactUs.vue'
+import CreateMessage from '../pages/CreateMessage.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -21,7 +22,7 @@ const router = createRouter({
       component: AllProperties
     },
     {
-      path: '/properties/:slug',
+      path: '/properties/:id',
       name: 'single-property',
       component: SingleProperty
     },
@@ -38,6 +39,11 @@ const router = createRouter({
       // route level code-splitting
       // this generates a separate chunk (About.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
+    },
+    {
+      path: '/messages/create/:id',
+      name: 'create-message',
+      component: CreateMessage,
     },
     {
       path: '/:pathMatch(.*)*',
