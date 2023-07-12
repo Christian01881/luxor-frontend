@@ -1,10 +1,10 @@
 <template>
-  <div class=" card container p-5">
+  <div class="card container p-5">
     <div v-if="success" class="alert alert-success text-start" role="alert">
-            Messaggio inviato con successo!
-        </div>
+      Messaggio inviato con successo!
+    </div>
     <h1>Invia un messaggio al proprietario</h1>
-    <form  @submit.prevent="sendMessage()" method="post">
+    <form @submit.prevent="sendMessage()" method="post">
       <div class="form-group">
         <label for="title">Titolo</label>
         <input
@@ -38,8 +38,13 @@
           required
         ></textarea>
       </div>
-      <button class="btn btn-lg btn-primary text-white my-3" type="submit" :disabled="loading">{{ loading ? 'Send...' : 'Send'}}
-     </button>
+      <button
+        class="btn btn-lg btn-primary text-white my-3"
+        type="submit"
+        :disabled="loading"
+      >
+        {{ loading ? "Send..." : "Send" }}
+      </button>
     </form>
   </div>
 </template>
@@ -58,13 +63,12 @@ export default {
       apiUrl: "http://127.0.0.1:8000/api/messages",
       loading: false,
       success: false,
-      errors: {}
+      errors: {},
     };
   },
   methods: {
     sendMessage() {
-        this.loading = true;
-        const propertyId = this.$route.params.id;
+      this.loading = true;
       const messageData = {
         property_id: propertyId,
         title: this.title,
@@ -74,17 +78,22 @@ export default {
       this.errors = {};
       axios.post(this.apiUrl, messageData).then((res) => {
         this.success = res.data.success;
-                if (!this.success) {
-                    this.errors = res.data.errors;
-                } else {
-                    // ripulisco i campi di input
-                    this.title = '';
-                    this.email = '';
-                    this.message = '';
-                }
-                this.loading = false;
+        if (!this.success) {
+          this.errors = res.data.errors;
+        } else {
+          // ripulisco i campi di input
+          this.title = "";
+          this.email = "";
+          this.message = "";
+        }
+        this.loading = false;
       });
     },
+  },
+  mounted() {
+    const propertyId = this.$route.params.id;
+    store.getProperty(this.linkProperty + propertyId, true);
+    this.title = store.property.title;
   },
 };
 </script>
