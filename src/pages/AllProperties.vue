@@ -2,11 +2,12 @@
     <div class="container my-5">
         <div class="row">
             <div class="col-6 mb-5" v-for="property in properties" :key="property.id">
+
                 <div class="card h-100">
                     <img v-if="property.images.length > 0" :src=" 'http://127.0.0.1:8000/storage/' + property.images[0].path" alt="">
                     <div class="card-body">
                         <h4 class="fw-bold text-warning">
-                            <router-link :to="{ name: 'single-property', params: { slug: property.slug } }">
+                            <router-link :to="{ name: 'single-property', params: { id: property.id } }">
                                 {{ property.title }}
                             </router-link></h4>
                         <div class="d-flex">
@@ -35,6 +36,7 @@ export default {
             properties: []
         };
     },
+   
     methods: {
         getData() {
             axios.get(`${store.apiURL}/properties`).then((res) => {

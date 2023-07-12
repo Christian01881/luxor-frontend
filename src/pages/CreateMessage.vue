@@ -57,19 +57,21 @@ export default {
       email: "",
       message: "",
       apiUrl: "http://127.0.0.1:8000/api/messages",
+      
     };
   },
   methods: {
     sendMessage() {
-      const propertySlug = this.$route.params.id;
+        const propertyId = this.$route.params.id;
       const messageData = {
+        property_id: propertyId,
         title: this.title,
         email: this.email,
         message: this.message,
       };
       axios.post(this.apiUrl, messageData).then((res) => {
         console.log(res.data);
-        // this.$router.push({ name: "all-properties" });
+        this.$router.push({ name: "all-properties" });
       });
     },
   },

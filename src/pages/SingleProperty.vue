@@ -1,20 +1,28 @@
 <template>
   <Loading v-if="store.loading" />
-  <div v-else class="card container" style="width: 50rem">
+  <div v-else class="card container property-details">
     <h2>{{ store.property.title }}</h2>
-    <ul>
-      <li v-for="image in store.property.images" :key="image.id">
-        <img :src="getImagePath(image.path)" alt="Property Image" />
-      </li>
-    </ul>
+    <div class="image-container">
+      <img :src="getImagePath(store.property.images[activeImageIndex].path)" alt="Property Image" />
+      <div class="thumbnails">
+        <img
+          v-for="(image, index) in store.property.images"
+          :key="image.id"
+          :src="getImagePath(image.path)"
+          alt="Thumbnail"
+          @click="changeImage(index)"
+          :class="{ active: index === activeImageIndex }"
+        />
+      </div>
+    </div>
     <p>{{ store.property.description }}</p>
-    <ul>
-      <li>Rooms: {{ store.property.rooms }}</li>
-      <li>Beds: {{ store.property.beds }}</li>
-      <li>Bathrooms: {{ store.property.bathrooms }}</li>
-      <li>Square Meters: {{ store.property.square_meters }}</li>
-      <li>Address: {{ store.property.address }}</li>
-    </ul>
+    <div>
+      <p>Rooms: {{ store.property.rooms }}</p>
+      <p>Beds: {{ store.property.beds }}</p>
+      <p>Bathrooms: {{ store.property.bathrooms }}</p>
+      <p>Square Meters: {{ store.property.square_meters }}</p>
+      <p>Address: {{ store.property.address }}</p>
+    </div>
 
     <div class="project-body">
       <div class="container">
@@ -24,58 +32,11 @@
             {{ service.name }}
           </li>
         </ul>
-        <a class="btn2 btn btn-danger"
-          ><router-link class="nav-link" :to="{ name: 'all-properties' }"
-            >Go to back</router-link
-          ></a
-        >
-        <button class="btn btn-primary" @click="sendMessage">
-          Invia un messaggio al proprietario
-        </button>
+        <a class="btn2 btn btn-danger" @click="$router.push({ name: 'all-properties' })">Go back</a>
+        <button class="btn btn-primary" @click="sendMessage">Send Message</button>
       </div>
     </div>
   </div>
-  <form action="" method="post">
-    <div class="form-group">
-      <label for="title">Titolo</label>
-      <input
-        type="text"
-        v-model="title"
-        id="title"
-        name="title"
-        class="form-control"
-        required
-      />
-    </div>
-    <div class="form-group">
-      <label for="email">Email</label>
-      <input
-        type="email"
-        v-model="email"
-        id="email"
-        name="email"
-        class="form-control"
-        required
-      />
-    </div>
-    <div class="form-group">
-      <label for="message">Messaggio</label>
-      <textarea
-        v-model="message"
-        id="message"
-        name="message"
-        class="form-control"
-        required
-      ></textarea>
-    </div>
-    <button
-      type="submit"
-      class="btn btn-primary my-3"
-      @click.prevent="sendMessage()"
-    >
-      Invia Messaggio
-    </button>
-  </form>
 </template>
 <script>
 import { store } from "../store";
@@ -94,7 +55,7 @@ export default {
       title: "",
       email: "",
       message: "",
-      id: store.property.id,
+      activeImageIndex: 0,
       apiUrl: "http://127.0.0.1:8000/api/messages",
     };
   },
@@ -103,30 +64,59 @@ export default {
       return store.imgBasePath + path;
     },
 
-    // sendMessage() {
-    //   const propertyId = this.store.property.id;
-    //   this.$router.push({ name: "create-message", params: { id: propertyId } });
-    // },
-
     sendMessage() {
-      const propertySlug = this.$route.params.id;
-      const messageData = {
-        title: this.title,
-        email: this.email,
-        message: this.message,
-        id: this.id,
-      };
-      axios.post(this.apiUrl, messageData).then((res) => {
-        console.log(res.data);
-        // this.$router.push({ name: "all-properties" });
-      });
+      const propertyId = this.store.property.id;
+      this.$router.push({ name: "create-message", params: { id: propertyId } });
     },
-  },
-  created() {
-    const propertytSlug = this.$route.params.slug;
+    changeImage(index) {
+      this.activeImageIndex = index;
+    },
+
+   },
+    created() {
+    const propertytSlug = this.$route.params.id;
     store.getProperty(this.linkProperty + propertytSlug, true);
-  },
+   },
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.image-container {
+  position: relative;
+  height: 300px;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit:fill;
+}
+
+.thumbnails {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  background-color: rgba(120, 52, 52, 0.5);
+}
+
+.thumbnails img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  cursor: pointer;
+  transition: opacity 0.3s;
+}
+
+.thumbnails img.active {
+  opacity: 0.5;
+}
+</style>
+
+
+
+
+
+

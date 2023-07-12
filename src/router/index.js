@@ -21,7 +21,7 @@ const router = createRouter({
       component: AllProperties
     },
     {
-      path: '/properties/:slug',
+      path: '/properties/:id',
       name: 'single-property',
       component: SingleProperty
     },
