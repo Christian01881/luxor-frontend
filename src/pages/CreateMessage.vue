@@ -1,7 +1,10 @@
 <template>
-  <div class="container p-5">
+  <div class=" card container p-5">
+    <div v-if="success" class="alert alert-success text-start" role="alert">
+            Messaggio inviato con successo!
+        </div>
     <h1>Invia un messaggio al proprietario</h1>
-    <form action="" method="post">
+    <form  @submit.prevent="sendMessage()" method="post">
       <div class="form-group">
         <label for="title">Titolo</label>
         <input
@@ -10,6 +13,7 @@
           id="title"
           name="title"
           class="form-control"
+          autocomplete="none"
           required
         />
       </div>
@@ -34,13 +38,8 @@
           required
         ></textarea>
       </div>
-      <button
-        type="submit"
-        class="btn btn-primary my-3"
-        @click.prevent="sendMessage()"
-      >
-        Invia Messaggio
-      </button>
+      <button class="btn btn-lg btn-primary text-white my-3" type="submit" :disabled="loading">{{ loading ? 'Send...' : 'Send'}}
+     </button>
     </form>
   </div>
 </template>
@@ -57,11 +56,14 @@ export default {
       email: "",
       message: "",
       apiUrl: "http://127.0.0.1:8000/api/messages",
-      
+      loading: false,
+      success: false,
+      errors: {}
     };
   },
   methods: {
     sendMessage() {
+        this.loading = true;
         const propertyId = this.$route.params.id;
       const messageData = {
         property_id: propertyId,
@@ -69,9 +71,18 @@ export default {
         email: this.email,
         message: this.message,
       };
+      this.errors = {};
       axios.post(this.apiUrl, messageData).then((res) => {
-        console.log(res.data);
-        this.$router.push({ name: "all-properties" });
+        this.success = res.data.success;
+                if (!this.success) {
+                    this.errors = res.data.errors;
+                } else {
+                    // ripulisco i campi di input
+                    this.title = '';
+                    this.email = '';
+                    this.message = '';
+                }
+                this.loading = false;
       });
     },
   },
