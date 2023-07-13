@@ -40,7 +40,7 @@ const router = createRouter({
       // which is lazy-loaded when the route is visited.
     },
     {
-      path: "/messages/create/:id",
+      path: "/messages/create/:slug",
       name: "create-message",
       component: CreateMessage,
     },

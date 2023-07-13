@@ -68,32 +68,36 @@ export default {
   },
   methods: {
     sendMessage() {
-      this.loading = true;
-      const propertyId = this.$route.params.slug;
-      const messageData = {
-        property_id: propertyId,
-        title: this.title,
-        email: this.email,
-        message: this.message,
-      };
-      this.errors = {};
-      axios.post(this.apiUrl, messageData).then((res) => {
-        this.success = res.data.success;
-        if (!this.success) {
-          this.errors = res.data.errors;
-        } else {
-          // ripulisco i campi di input
-          this.title = "";
-          this.email = "";
-          this.message = "";
-        }
-        this.loading = false;
-      });
-    },
+  this.loading = true;
+  const propertySlug = this.$route.params.slug; 
+  const messageData = {
+    property_slug: propertySlug, 
+    title: this.title,
+    email: this.email,
+    message: this.message,
+  };
+  this.errors = {};
+  axios.post(`${this.apiUrl}/${propertySlug}`, messageData) 
+    .then((res) => {
+      this.success = res.data.success;
+      if (!this.success) {
+        this.errors = res.data.errors;
+      } else {
+        // Ripulisco i campi di input
+        this.title = "";
+        this.email = "";
+        this.message = "";
+      }
+      this.loading = false;
+    })
+    .catch((error) => {
+      console.log(error);
+      this.loading = false;
+    });
+},
   },
+  
   mounted() {
-    const propertyId = this.$route.params.id;
-    store.getProperty(this.linkProperty + propertyId, true);
     this.title = store.property.title;
   },
 };

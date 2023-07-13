@@ -113,9 +113,9 @@ export default {
     },
 
     sendMessage() {
-      const propertyId = this.store.property.id;
-      this.$router.push({ name: "create-message", params: { id: propertyId } });
-    },
+  const propertySlug = this.$route.params.slug;
+  this.$router.push({ name: "create-message", params: { slug: propertySlug } });
+},
     changeImage(index) {
       this.activeImageIndex = index;
     },
