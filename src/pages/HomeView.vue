@@ -1,12 +1,9 @@
 <template>
-</template>
-
-<script>
-    export default {
-
-    }
-</script>
-
-<style lang="scss" scoped>
-
-</style>
+    <div class="home-page">
+      <!-- Contenuto della pagina Home -->
+    </div>
+  </template>
+  
+  <style>
+  
+  </style>

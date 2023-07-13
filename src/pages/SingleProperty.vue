@@ -1,7 +1,8 @@
 <template>
   <Loading v-if="store.loading" />
-  <div v-else class="card container property-details p-3">
+  <div v-else class="card container property-details p-4">
     <h2>{{ store.property.title }}</h2>
+    <span class=""><i class="fa-solid fa-location-dot text-primary pe-2 py-2"></i>{{ store.property.address }}</span> 
     <div class="row">
       <div class="col-md-6">
         <div class="image-container">
@@ -26,7 +27,7 @@
         <div class="row">
           <div class="col-sm-6">
             <p class="border border-1 rounded-2 p-2">
-              <span class="fw-bold">Rooms:</span>
+              <span class="fw-bold">Camere:</span>
               {{ store.property.rooms }}
             </p>
           </div>
@@ -50,16 +51,16 @@
             </p>
           </div>
         </div>
-        <div class="row">
+        <!-- <div class="row">
           <div class="col-12">
             <p class="border border-1 rounded-2 p-2">
-              <span class="fw-bold">Address:</span> {{ store.property.address }}
+              <span class="fw-bold"><i class="fa-solid fa-location-dot text-primary"></i></span> {{ store.property.address }}
             </p>
           </div>
-        </div>
+        </div> -->
         <div class="row">
           <div class="col-12">
-            <h3>Services:</h3>
+            <h5>Gli ospiti vanno pazzi per...</h5>
             <div class="d-flex">
               <div
                 class="card me-3 p-1"
