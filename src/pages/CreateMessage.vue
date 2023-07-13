@@ -69,6 +69,7 @@ export default {
   methods: {
     sendMessage() {
       this.loading = true;
+      const propertyId = this.$route.params.slug;
       const messageData = {
         property_id: propertyId,
         title: this.title,

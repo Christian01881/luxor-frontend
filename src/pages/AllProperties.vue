@@ -154,6 +154,7 @@
 <script>
 import { services } from "@tomtom-international/web-sdk-services";
 import SearchBox from "@tomtom-international/web-sdk-plugin-searchbox";
+import  visitStore   from "../visitStore"; 
 import axios from "axios";
 export default {
   name: "searchBar",
@@ -195,6 +196,8 @@ export default {
     ttInput.setAttribute("required", "true");
 
     this.searchApartments();
+
+    visitStore.getIpAddress();
   },
   methods: {
     searchApartments() {

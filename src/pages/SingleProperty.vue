@@ -88,6 +88,7 @@
 <script>
 import { store } from "../store";
 import Loading from "../components/Loading.vue";
+import { visitStore }  from "../visitStore"; 
 import axios from "axios";
 
 export default {
@@ -122,6 +123,9 @@ export default {
   created() {
     const propertytSlug = this.$route.params.slug;
     store.getProperty(this.linkProperty + propertytSlug, true);
+
+    visitStore.countView(this.$router);
+
   },
 };
 </script>
