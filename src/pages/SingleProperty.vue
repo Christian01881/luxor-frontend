@@ -26,27 +26,27 @@
         <p class="py-2">{{ store.property.description }}</p>
         <div class="row">
           <div class="col-sm-6">
-            <p class="border border-1 rounded-2 p-2">
+            <p class="border border-dark rounded-2 p-2">
               <span class="fw-bold">Camere:</span>
               {{ store.property.rooms }}
             </p>
           </div>
           <div class="col-sm-6">
-            <p class="border border-1 rounded-2 p-2">
-              <span class="fw-bold">Beds:</span> {{ store.property.beds }}
+            <p class="border border-dark rounded-2 p-2">
+              <span class="fw-bold">Letti:</span> {{ store.property.beds }}
             </p>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-6">
-            <p class="border border-1 rounded-2 p-2">
-              <span class="fw-bold">Bathrooms:</span>
+            <p class="border border-dark rounded-2 p-2">
+              <span class="fw-bold">Bagni:</span>
               {{ store.property.bathrooms }}
             </p>
           </div>
           <div class="col-sm-6">
-            <p class="border border-1 rounded-2 p-2">
-              <span class="fw-bold">Square Meters:</span>
+            <p class="border border-dark rounded-2 p-2">
+              <span class="fw-bold">Metri quadri:</span>
               {{ store.property.square_meters }}
             </p>
           </div>
@@ -60,26 +60,31 @@
         </div> -->
         <div class="row">
           <div class="col-12">
-            <h5>Gli ospiti vanno pazzi per...</h5>
+            <h5 class="fw-bold">Gli ospiti vanno pazzi per...</h5>
             <div class="d-flex">
               <div
-                class="card me-3 p-1"
+                class="card border border-dark me-3 p-1"
                 v-for="service in store.property.services"
                 :key="service.id"
               >
                 {{ service.name }}
               </div>
             </div>
-            <div class="d-flex p-3">
-              <a
-                class="btn2 btn btn-danger me-2"
-                @click="$router.push({ name: 'all-properties' })"
-                >Go back</a
-              >
-              <button class="btn btn-primary" @click="sendMessage">
-                Send Message
-              </button>
+            <div class="d-flex pt-5 justify-content-between">
+                  <div>
+                      <a
+                        class="btn2 btn btn-danger me-2"
+                        @click="$router.push({ name: 'all-properties' })"
+                        >Torna indietro</a>
+                      <button class="btn btn-primary" @click="sendMessage">
+                        Contatta proprietario
+                      </button>
+                </div>
+                <div class="rating">
+                  <span v-html="createRating({ rating: 4, total: 5 })"></span>
+                </div>
             </div>
+           
           </div>
         </div>
       </div>
@@ -114,13 +119,26 @@ export default {
     },
 
     sendMessage() {
-  const propertySlug = this.$route.params.slug;
-  this.$router.push({ name: "create-message", params: { slug: propertySlug } });
-},
+          const propertySlug = this.$route.params.slug;
+          this.$router.push({ name: "create-message", params: { slug: propertySlug } });
+    },
+
     changeImage(index) {
       this.activeImageIndex = index;
     },
+
+    createRating({ 
+      rating, 
+      total, 
+      starIcon = '<i class="fa-solid fa-star"></i>', 
+      emptyIcon = '<i class="fa-regular fa-star"></i>' }) {
+        
+      const star = starIcon.repeat(rating);
+      const empty = emptyIcon.repeat(total - rating);
+      return star + empty;
+    },
   },
+
   created() {
     const propertytSlug = this.$route.params.slug;
     store.getProperty(this.linkProperty + propertytSlug, true);
@@ -163,5 +181,15 @@ export default {
 
 .thumbnails img.active {
   opacity: 0.5;
+}
+
+.rating {
+  color: gold;
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.rating i {
+  margin-right: 5px;
 }
 </style>

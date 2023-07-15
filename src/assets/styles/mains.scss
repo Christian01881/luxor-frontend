@@ -15,6 +15,8 @@ $fa-font-path: '../webfonts';
 @import '../node_modules/@fortawesome/fontawesome-free/scss/regular';
 @import '../node_modules/@fortawesome/fontawesome-free/scss/brands';
 
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Shadows+Into+Light&display=swap');
+
 
 html, body {
     height: 100%;
@@ -29,4 +31,8 @@ a{
 main{
     background-color: black;
     // padding: 30px;
+    font-family: 'Titillium Web';
+}
+.btn-shadow{
+    box-shadow: rgb(142, 140, 15) 5px 5px ;
 }

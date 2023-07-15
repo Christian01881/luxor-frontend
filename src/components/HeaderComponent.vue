@@ -1,26 +1,32 @@
 <template>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary p-2">
-        <div class="container-fluid">
-            <router-link :to="{ name: 'home' }" class="navbar-brand">Luxorbnb</router-link>
-            <button class="navbar-toggler" type="button" @click="toggleNavbar" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" :aria-expanded="isNavbarOpen ? 'true' : 'false'" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" :class="{ 'show': isNavbarOpen }">
-                <ul class="nav navbar-nav me-auto mb-2 mb-lg-0">
-                    <li><router-link :to="{ name: 'home' }" class="nav-link active" @click="hideNavbar">Home</router-link></li>
-                    <li><router-link :to="{ name: 'all-properties' }" class="nav-link" @click="hideNavbar">Proprietà</router-link></li>
-                    <li><router-link :to="{ name: 'about-us' }" class="nav-link" @click="hideNavbar">Chi siamo</router-link></li>
-                    <li><router-link :to="{ name: 'contact-us' }" class="nav-link" @click="hideNavbar">Contatti</router-link></li>
-                    
-                </ul>
-                <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary p-2">
+    <div class="container-fluid">
+      <router-link :to="{ name: 'home' }" class="navbar-brand" style="font-family: 'Shadows Into Light', cursive; font-weight: bold; font-size: 34px;">LuxorBnB</router-link>
+      <button class="navbar-toggler" type="button" @click="toggleNavbar" :class="{ 'collapsed': !isNavbarOpen }" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" :aria-expanded="isNavbarOpen ? 'true' : 'false'" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" :class="{ 'show': isNavbarOpen }">
+        <ul class="nav navbar-nav me-auto mb-2 mb-lg-0">
+          <li>
+            <router-link :to="{ name: 'home' }" class="nav-link active" @click="hideNavbar">Home</router-link>
+          </li>
+          <li>
+            <router-link :to="{ name: 'all-properties' }" class="nav-link" @click="hideNavbar">Proprietà</router-link>
+          </li>
+          <li>
+            <router-link :to="{ name: 'about-us' }" class="nav-link" @click="hideNavbar">Chi siamo</router-link>
+          </li>
+          <li>
+            <router-link :to="{ name: 'contact-us' }" class="nav-link" @click="hideNavbar">Contatti</router-link>
+          </li>
+        </ul>
+        <div>
+          <a class="btn btn-primary" href="http://localhost:8000/">Accedi</a>
         </div>
-    </nav>
+      </div>
+    </div>
+  </nav>
 </template>
 
 <script>
@@ -110,4 +116,5 @@ export default {
 .nav a:hover {
   color: #080808;
 }
+
 </style>

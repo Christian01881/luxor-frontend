@@ -1,17 +1,19 @@
 
 
 <template>
-  <div class="app-container">
-    <header>
-      <HeaderComponent />
-    </header>
-    <main>
-      <router-view></router-view>
-    </main>
-    <footer>
-      <FooterComponent />
-    </footer>
-  </div>
+  <transition name="fade" mode="out-in">
+    <div class="app-container">
+      <header>
+        <HeaderComponent />
+      </header>
+      <main>
+        <router-view></router-view>
+      </main>
+      <footer>
+        <FooterComponent />
+      </footer>
+    </div>
+  </transition>
 </template>
 
 
@@ -44,7 +46,7 @@ html, body {
 header {
   flex: 0 0 auto;
   position: fixed;
-  z-index: 1;
+  z-index: 999;
   top: 0;
   left: 0;
   right: 0;
@@ -62,5 +64,15 @@ footer {
   bottom: 0;
   left: 0;
   right: 0;
+  font-family: 'Titillium Web';
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

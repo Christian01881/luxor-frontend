@@ -3,8 +3,8 @@
     <div class="container py-5">
       <div class="row h-100 align-items-center py-5">
         <div class="col-lg-6">
-          <h1 class="display-4 title fw-bold">Chi siamo</h1>
-          <p class="lead text-white mb-0">Benvenuti su Luxorbnb, la piattaforma perfetta per trovare alloggi straordinari
+          <h1 class="display-4 title fw-bold">Chi siamo...</h1>
+          <p class="lead text-white mb-0">Benvenuti su <span class="text-warning fw-bold">LuxorBnB,</span> la piattaforma perfetta per trovare alloggi straordinari
             in tutto il mondo. Siamo qui per rendere il tuo viaggio un'esperienza indimenticabile, offrendoti una vasta
             selezione di alloggi di qualità superiore e un processo di prenotazione semplice e conveniente. Unisciti a noi
             su Luxorbnb e scopri il modo perfetto per viaggiare.</p>
@@ -54,7 +54,7 @@
           <div class="bg-white rounded shadow-sm py-5 px-4"><img
               src="https://bootstrapious.com/i/snippets/sn-about/avatar-3.png " alt="" width="100"
               class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
-            <h5 class="mb-0">Emanuele Rosella Musico</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
+            <h5 class="mb-0">Emanuele Rosella</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
             <ul class="social mb-0 list-inline mt-3">
               <li class="list-inline-item"><a href="https://github.com/emanuelerm " class="social-link"><i class="fa-brands fa-github"></i></a></li>
               <li class="list-inline-item"><a href="#" class="social-link"><i class="fa-brands fa-linkedin"></i></a></li>
@@ -70,7 +70,7 @@
           <div class="bg-white rounded shadow-sm py-5 px-4"><img
               src="https://bootstrapious.com/i/snippets/sn-about/avatar-3.png" alt="" width="100"
               class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
-            <h5 class="mb-0">Christian Paliotta Moretti</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
+            <h5 class="mb-0">Christian Paliotta</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
             <ul class="social mb-0 list-inline mt-3">
               <li class="list-inline-item"><a href="https://github.com/Christian01881" class="social-link"><i class="fa-brands fa-github"></i></a></li>
               <li class="list-inline-item"><a href="#" class="social-link"><i class="fa-brands fa-linkedin"></i></a></li>
@@ -88,7 +88,7 @@
               class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
             <h5 class="mb-0">Matteo Aguiari</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
             <ul class="social mb-0 list-inline mt-3">
-              <li class="list-inline-item"><a href="https://github.com/MatteoAgu01 " class="social-link"><i class="fa-brands fa-github"></i></a></li>
+              <li class="list-inline-item"><a href="https://github.com/MatteoAgu01" class="social-link"><i class="fa-brands fa-github"></i></a></li>
               <li class="list-inline-item"><a href="#" class="social-link"><i class="fa-brands fa-linkedin"></i></a></li>
               <li class="list-inline-item"><a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a></li>
               <li class="list-inline-item"><a href="#" class="social-link"><i class="fa-brands fa-facebook"></i></a></li>
@@ -98,13 +98,13 @@
         <!-- End-->
 
         <!-- Team item-->
-        <div class="col-12 col-sm-6 col-md-4">
+        <div class="col-12 col-sm-6 col-md-4 mb-4">
           <div class="bg-white rounded shadow-sm py-5 px-4"><img
               src="https://bootstrapious.com/i/snippets/sn-about/avatar-1.png" alt="" width="100"
               class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
-            <h5 class="mb-0">Jorge Castillo Tenasoa</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
+            <h5 class="mb-0">Jorge Castillo</h5><span class="small text-uppercase text-muted">CEO - Founder</span>
             <ul class="social mb-0 list-inline mt-3">
-              <li class="list-inline-item"><a href="#" class="social-link"><i class="fa-brands fa-github"></i></a></li>
+              <li class="list-inline-item"><a href="https://github.com/JorgeLuix" class="social-link"><i class="fa-brands fa-github"></i></a></li>
               <li class="list-inline-item"><a href="#" class="social-link"><i class="fa-brands fa-linkedin"></i></a></li>
               <li class="list-inline-item"><a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a></li>
               <li class="list-inline-item"><a href="#" class="social-link"><i class="fa-brands fa-facebook"></i></a></li>
@@ -114,7 +114,7 @@
         <!-- End-->
 
         <!-- Team item-->
-        <div class="col-12 col-sm-6 col-md-4">
+        <div class="col-12 col-sm-6 col-md-4 mb-4">
           <div class="bg-white rounded shadow-sm py-5 px-4"><img
               src="https://bootstrapious.com/i/snippets/sn-about/avatar-3.png" alt="" width="100"
               class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
@@ -130,7 +130,7 @@
         <!-- End-->
 
         <!-- Team item-->
-        <div class="col-12 col-sm-6 col-md-4">
+        <div class="col-12 col-sm-6 col-md-4 mb-4">
           <div class="bg-white rounded shadow-sm py-5 px-4"><img
               src="https://bootstrapious.com/i/snippets/sn-about/avatar-3.png" alt="" width="100"
               class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm">
@@ -156,6 +156,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.team-item {
+  height: 300px;
+}
 .social-link {
   width: 30px;
   height: 30px;
