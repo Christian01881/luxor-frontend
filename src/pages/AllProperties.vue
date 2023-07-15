@@ -285,13 +285,42 @@ h5 {
 }
 
 
+@media (max-width: 2450px) {
+  .container-carousel {
+    padding-top: 40px;
+  }
+.lp-hero__bg-image {
+  height: 75vh;
+}
+}
+
+@media (max-width: 1350px) {
+  .container-carousel {
+    padding-top: 30px;
+  }
+.lp-hero__bg-image {
+  height: 75vh;
+}
+}
+
+
+@media (max-width: 1200px) {
+  .container-carousel {
+    padding-top: 30px;
+  }
+.lp-hero__bg-image {
+  height: 70vh;
+}
+}
+
+
 
 @media (max-width: 968px) {
   .container-carousel {
-    padding-top: 80px;
+    padding-top: 150px;
   }
 .lp-hero__bg-image {
-  height: 100vh;
+  height: 80vh;
 }
 }
 
@@ -309,6 +338,14 @@ h5 {
   }
   .lp-hero__bg-image {
   height: 90vh;
+}
+}
+@media (max-width: 425px) {
+  .container-carousel {
+    padding-top: 50px;
+  }
+  .lp-hero__bg-image {
+  height: 60vh;
 }
 }
 
