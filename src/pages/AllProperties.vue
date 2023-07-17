@@ -76,24 +76,26 @@
       <div class="col-md-12">
         <div class="d-flex flex-wrap">
           <div
-            class="col-12 col-md-4 mb-4"
+            class="col-12 col-md-4"
             v-for="(property, index) in properties"
             :key="property.id"
           >
-            <div class="card border-0 m-2 h-100">
-              <img
-                :src="`http://127.0.0.1:8000/storage/${property.images[0].path}`"
-                alt=""
-                class="card-img border-2"
-                v-if="property.images.length > 0"
-              />
-              <img
-                src="https://www.leonardospada.it/wp-content/uploads/2022/09/errore-404-pagina-non-trovata-1024x576.jpg"
-                alt="Image-Not-Found"
-                class="h-100 border-2"
-                v-else
-              />
-              <div class="card-body d-flex flex-column justify-content-between">
+            <div class="card card-property h-100 border-0 m-2">
+                <div class="card-image h-100">
+                    <img
+                      :src="`http://127.0.0.1:8000/storage/${property.images[0].path}`"
+                      alt=""
+                      class="card-img border-2 h-100"
+                      v-if="property.images.length > 0"
+                    />
+                    <img
+                      src="https://www.leonardospada.it/wp-content/uploads/2022/09/errore-404-pagina-non-trovata-1024x576.jpg"
+                      alt="Image-Not-Found"
+                      class="h-100 border-2"
+                      v-else
+                    />
+                </div>
+              <div class="card-body card-content bg-dark w-100 text-white d-flex flex-column justify-content-between">
                 <h5 class="fw-bold text-warning">
                   <router-link
                     :to="{
@@ -284,7 +286,50 @@ h5 {
   padding-top: 50px;
 }
 
+.col-12{
+    margin-bottom: 12%;
+}
+.card-property{
+    position: relative;
+    background-color: transparent;
+    .card-image{
+        z-index: 1;
+        overflow: hidden;
+        border-radius: 100px;
+    }
+    img{
+        transition: 2s;
+    }
+    &:hover img{
+        scale: 1.4;
+        transition: 2s;
+    }
+    .card-content{
+        top: 50%;
+        position: absolute;
+        background-color: white;
+        transition: 2s;
+        opacity: 0;
+    }
+    &:hover .card-content{
+        top: 102%;
+        transition: 2s;
+        opacity: 1;
+        border-radius: 20px 60px;
+    }
+}
 
+@media (max-width: 1560px) {
+    .col-12{
+        margin-bottom: 16%;
+    }
+}
+
+@media (max-width: 1200px) {
+    .col-12{
+        margin-bottom: 20%;
+    }
+}
 
 @media (max-width: 968px) {
   .container-carousel {
